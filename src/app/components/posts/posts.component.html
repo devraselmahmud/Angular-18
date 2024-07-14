@@ -1,0 +1,23 @@
+<div>
+    <input type="text" (change)="setNewUserName($event)" [value]="newUserName"/>
+    <button (click)="addUser()">Add User</button>
+</div>
+
+<div class="user">
+  @for (user of users; track user) {
+    <span>{{ user.name }}</span>
+    <button (click)="removeUser.emit(user.id)">
+      Remove
+    </button>
+  } @empty {
+    <p>There is no items!</p>
+  }
+
+</div>
+<div>
+  @for (item of data; track item) {
+    <li>{{ item.title }}</li>
+  } @empty {
+    <p>There is no items!</p>
+  }
+</div>
