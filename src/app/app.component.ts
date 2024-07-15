@@ -1,4 +1,4 @@
-import {Component, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component,OnInit, signal, WritableSignal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {PostService} from "./services/post.service";
 import {PostsComponent} from "./components/posts/posts.component";
@@ -11,6 +11,7 @@ import {PostsComponent} from "./components/posts/posts.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
+
   title = 'angular-communication';
   data: WritableSignal<any> = signal(null);
 

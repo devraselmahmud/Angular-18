@@ -4,7 +4,7 @@
 </div>
 
 <div class="user">
-  @for (user of users; track user) {
+  @for (user of users(); track user) {
     <span>{{ user.name }}</span>
     <button (click)="removeUser.emit(user.id)">
       Remove
@@ -14,8 +14,13 @@
   }
 
 </div>
+<p>{{ calc() }}</p>
+<button (click)="onClick()">Count</button>
+<p>{{ calculation() }}</p>
+<button (click)="onDecrease()">Decrease</button>
+<p>{{ calculation() }}</p>
 <div>
-  @for (item of data; track item) {
+  @for (item of data(); track item) {
     <li>{{ item.title }}</li>
   } @empty {
     <p>There is no items!</p>

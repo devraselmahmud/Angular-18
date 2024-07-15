@@ -1,4 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  OnInit, output,
+  signal,
+  Signal,
+  WritableSignal
+} from '@angular/core';
 
 @Component({
   selector: 'app-posts',
@@ -7,10 +15,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrl: './posts.component.css'
 })
 export class PostsComponent implements OnInit {
-  @Input() data: any;
-  @Input() users: any;
-  @Output() removeUser = new EventEmitter();
-  @Output() addUserEvent = new EventEmitter();
+  data = input<any>();
+  users = input<any>();
+  removeUser = output<any>();
+  addUserEvent = output<any>();
 
   newUserName: any = '';
 
@@ -22,6 +30,16 @@ export class PostsComponent implements OnInit {
     this.addUserEvent.emit(this.newUserName);
     console.log(this.newUserName)
     this.newUserName = '';
+  }
+
+  calc: WritableSignal<number> = signal(8);
+  calculation: Signal<number> = computed(() => this.calc() * 3);
+  decrease: Signal<number> = computed(() => this.calc() / 2);
+  onClick() {
+    return this.calc.set(this.calculation());
+  }
+  onDecrease() {
+    return this.calc.set(this.decrease());
   }
 
   ngOnInit() {}
